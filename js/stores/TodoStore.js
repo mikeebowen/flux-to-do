@@ -78,17 +78,53 @@ function destroyCompleted() {
 
 // toggle case of item
 function toggleCase () {
+
   for (var key in _todos) {
+    console.log(_todos[key]['text']);
     var text = _todos[key]['text'];
-    if (key === _todos[key]['id']) {
-      text = text.toUpperCase();
-      update(key, _todos[key]['text']);
-      console.log(text)
-      // if (text === text.toLowerCase()) {
-      //   text.toUpperCase();
-      // };
-    };
+      if (text) {
+        var textArray = text.split(' ');
+        for (var i = 0; i < textArray.length; i++) {
+          var tmpText = textArray[i].split('');
+          tmpText[0] = tmpText[0].toUpperCase();
+          tmpText = tmpText.join('');
+          textArray[i] = tmpText;
+        }
+        console.log(textArray);
+        text = textArray.join(' ');
+        return text;
+      } else {
+        text = text.toUpperCase();
+        console.log(text);
+        return text;
+    }
+
   }
+  // for (var key in _todos) {
+  //   var text = _todos[key]['text'];
+  //   if (key === _todos[key]['id']) {
+  //     // text = text.toUpperCase();
+  //     // update(key, _todos[key]['text']);
+  //     if (!text === text.toLowerCase()) {
+  //       text = text.toUpperCase();
+  //       console.log(text);
+  //       return text;
+  //     }
+  //     if (text === text.toUpperCase()) {
+  //       var textArray = text.split(' ');
+  //       for (var i = 0; i < textArray.length; i++) {
+  //         textArray[i].charAt(0).toUpperCase();
+  //       }
+  //       text = textArray.join(' ');
+  //       console.log(text);
+  //       return text;
+  //     } else {
+  //       text = text.toUpperCase();
+  //       console.log(text);
+  //       return text;
+  //     }
+  //   }
+  // }
 }
 
 var TodoStore = assign({}, EventEmitter.prototype, {
