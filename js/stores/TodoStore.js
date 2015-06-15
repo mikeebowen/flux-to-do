@@ -34,11 +34,6 @@ function create(text) {
     text: text
   };
 }
-
-// toggle case of item
-function toggleCase (id) {
-  console.log('HELLOOOOO', id);
-};
 /**
  * Update a TODO item.
  * @param  {string} id
@@ -78,6 +73,21 @@ function destroyCompleted() {
     if (_todos[id].complete) {
       destroy(id);
     }
+  }
+}
+
+// toggle case of item
+function toggleCase () {
+  for (var key in _todos) {
+    var text = _todos[key]['text'];
+    if (key === _todos[key]['id']) {
+      text = text.toUpperCase();
+      update(key, _todos[key]['text']);
+      console.log(text)
+      // if (text === text.toLowerCase()) {
+      //   text.toUpperCase();
+      // };
+    };
   }
 }
 
@@ -174,9 +184,9 @@ AppDispatcher.register(function(action) {
       break;
 
     case TodoConstants.TODO_TOGGLE_CASE:
-    toggleCase();
-    TodoStore.emitChange();
-    break;
+      toggleCase();
+      TodoStore.emitChange();
+      break;
 
     default:
       // no op

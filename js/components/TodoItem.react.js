@@ -65,6 +65,8 @@ var TodoItem = React.createClass({
             {todo.text}
           </label>
           <button className="destroy" onClick={this._onDestroyClick} />
+        </div>
+        <div>
           <button className="toggleCase" onClick={this._onToggleCaseClick}>Toggle Case</button>
         </div>
         {input}
