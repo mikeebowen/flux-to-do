@@ -18,6 +18,7 @@ var CHANGE_EVENT = 'change';
 
 var _todos = {};
 
+
 /**
  * Create a TODO item.
  * @param  {string} text The content of the TODO
@@ -34,6 +35,10 @@ function create(text) {
   };
 }
 
+// toggle case of item
+function toggleCase (id) {
+  console.log('HELLOOOOO', id);
+};
 /**
  * Update a TODO item.
  * @param  {string} id
@@ -167,6 +172,11 @@ AppDispatcher.register(function(action) {
       destroyCompleted();
       TodoStore.emitChange();
       break;
+
+    case TodoConstants.TODO_TOGGLE_CASE:
+    toggleCase();
+    TodoStore.emitChange();
+    break;
 
     default:
       // no op

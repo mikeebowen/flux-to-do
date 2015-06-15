@@ -78,7 +78,16 @@ var TodoActions = {
     AppDispatcher.dispatch({
       actionType: TodoConstants.TODO_DESTROY_COMPLETED
     });
+  },
+
+  // toggle through different letter case of item
+
+  toggleCase: function () {
+    AppDispatcher.dispatch({
+      actionType: TodoConstants.TODO_TOGGLE_CASE
+    })
   }
+
 
 };
 
